@@ -1,8 +1,10 @@
+
+
 import { useEffect } from "react"
 import useSWR from "swr"
 
 const adminAddresses = {
-  "0x2eEa62DD2aAc6146D1EaA46775Be8BfF488c4589": true
+  "0x9d16120b56732d59da8562a078f83a8a3836b5cd0b6a1e9a79384aa6a1146a11": true
 }
 
 export const handler = (web3, provider) => () => {
@@ -15,6 +17,11 @@ export const handler = (web3, provider) => () => {
     }
   )
 
+  if(data){
+    console.log(data);
+    console.log(web3.utils.keccak256(data));
+  }
+
   useEffect(() => {
     provider &&
     provider.on("accountsChanged",
@@ -25,7 +32,9 @@ export const handler = (web3, provider) => () => {
   return {
     account: {
       data,
-      isAdmin: (data && adminAddresses[data]) ?? false,
+      isAdmin: (
+        data &&
+        adminAddresses[web3.utils.keccak256(data)]) ?? false,
       mutate,
       ...rest
     }
