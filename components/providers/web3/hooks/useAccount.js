@@ -16,12 +16,7 @@ export const handler = (web3, provider) => () => {
       return accounts[0]
     }
   )
-
-  if(data){
-    console.log(data);
-    console.log(web3.utils.keccak256(data));
-  }
-
+  
   useEffect(() => {
     provider &&
     provider.on("accountsChanged",
