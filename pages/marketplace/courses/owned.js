@@ -8,9 +8,11 @@ import { MarketHeader } from "@components/ui/marketplace"
 import { getAllCourses } from "@content/courses/fetcher"
 import { useRouter } from "next/router"
 import Link from "next/link"
+import { useWeb3 } from "@components/providers"
 
-export default function OwnedCourses({ courses }) {
+export default function OwnedCourses({courses}) {
   const router = useRouter()
+  const { requireInstall } = useWeb3()
   const { account } = useAccount()
   const { ownedCourses } = useOwnedCourses(courses, account.data)
 
@@ -18,7 +20,7 @@ export default function OwnedCourses({ courses }) {
     <>
       <MarketHeader />
       <section className="grid grid-cols-1">
-        {ownedCourses.isEmpty &&
+        { ownedCourses.isEmpty &&
           <div className="w-1/2">
             <Message type="warning">
               <div>You don't own any courses</div>
@@ -30,7 +32,21 @@ export default function OwnedCourses({ courses }) {
             </Message>
           </div>
         }
-        {ownedCourses.data?.map(course =>
+        { account.isEmpty &&
+          <div className="w-1/2">
+            <Message type="warning">
+              <div>Please connect to Metamask</div>
+            </Message>
+          </div>
+        }
+        { requireInstall &&
+          <div className="w-1/2">
+            <Message type="warning">
+              <div>Please install Metamask</div>
+            </Message>
+          </div>
+        }
+        { ownedCourses.data?.map(course =>
           <OwnedCourseCard
             key={course.id}
             course={course}
