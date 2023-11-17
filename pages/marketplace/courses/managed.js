@@ -117,12 +117,12 @@ export default function ManagedCourses() {
                 <Button
                   onClick={() => activateCourse(course.hash)}
                   variant="green">
-                  Activate
+                  Accept
                 </Button>
                 <Button
                   onClick={() => deactivateCourse(course.hash)}
                   variant="red">
-                  Deactivate
+                  Discard
                 </Button>
               </div>
             }

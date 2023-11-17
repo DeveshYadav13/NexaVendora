@@ -7,7 +7,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'thrangra.sirv.com',
+        hostname: 'm.media-amazon.com',
         pathname: '**',
       },
     ],

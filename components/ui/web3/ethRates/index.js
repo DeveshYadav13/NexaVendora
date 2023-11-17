@@ -51,7 +51,7 @@ export default function EthRates() {
             </div>
           }
         </div>
-        <p className="text-lg text-gray-500">Price per course</p>
+        <p className="text-lg text-gray-500">Price per item</p>
       </div>
     </div>
   )

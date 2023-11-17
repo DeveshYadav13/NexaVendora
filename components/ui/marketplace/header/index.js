@@ -9,10 +9,10 @@ const LINKS = [{
   value: "Buy"
 }, {
   href: "/marketplace/courses/owned",
-  value: "My Courses"
+  value: "My Products"
 }, {
   href: "/marketplace/courses/managed",
-  value: "Manage Courses",
+  value: "Manage Products",
   requireAdmin: true
 }]
 
