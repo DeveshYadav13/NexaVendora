@@ -34,7 +34,7 @@ export default function Course({course}) {
       <Keypoints
         points={course.wsl}
       />
-      { courseState &&
+      {/* { courseState &&
         <div className="max-w-5xl mx-auto">
           { courseState === "purchased" &&
             <Message type="warning">
@@ -55,12 +55,12 @@ export default function Course({course}) {
             </Message>
           }
         </div>
-      }
-      <Curriculum
+      } */}
+      {/* <Curriculum
         isLoading={isLoading}
         locked={isLocked}
         courseState={courseState}
-      />
+      /> */}
       <Modal />
     </>
   )
