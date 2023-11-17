@@ -18,32 +18,30 @@ export default function Marketplace({courses}) {
   const purchaseCourse = order => {
     const hexCourseId = web3.utils.utf8ToHex(selectedCourse.id)
     console.log(hexCourseId)
-
     // hex course ID:
     // 0x31343130343734000000000000000000
 
     // address
-    // 0xf8929048D74164582E5FA0897fC654CbF0c096C6
+    // 0x2eEa62DD2aAc6146D1EaA46775Be8BfF488c4589
 
-    // 31343130343734000000000000000000f8929048D74164582E5FA0897fC654CbF0c096C6
+    // 313431303437340000000000000000002eEa62DD2aAc6146D1EaA46775Be8BfF488c4589
     // Order Hash
-    // 2e0b409e2bf77ce6466df3990199f3a7377f305fef2c55556a8cae5decbdd0e5
+    // c95ff6d74fb77b65c0eb2f432fad280a3e31fdc8a1fae6969e4b6ffb49b4b890
     const orderHash = web3.utils.soliditySha3(
       { type: "bytes16", value: hexCourseId },
       { type: "address", value: account.data }
     )
 
     console.log(orderHash)
-    // test@gmail.com
-    // af257bcc3cf653863a77012256c927f26d8ab55c5bea3751063d049d0538b902
+    // t1@gmail.com
+    // 7226d4b427f6d69e012f51fcbe183fa2bf47ab8f2910cc69f468ae5a672187ab
     const emailHash = web3.utils.sha3(order.email)
 
     console.log(emailHash)
 
-    // af257bcc3cf653863a77012256c927f26d8ab55c5bea3751063d049d0538b9022e0b409e2bf77ce6466df3990199f3a7377f305fef2c55556a8cae5decbdd0e5
-
+    // 7226d4b427f6d69e012f51fcbe183fa2bf47ab8f2910cc69f468ae5a672187abc95ff6d74fb77b65c0eb2f432fad280a3e31fdc8a1fae6969e4b6ffb49b4b890
     // proof:
-    // b13bdad9cb08b53405c63b05f052a842ec6ab91f6f4239355ff359eb5532b29f
+    // 7d994dfdda2958e193a3813a126f957952b215eaf472a60058c19c40c62eb989
     const proof = web3.utils.soliditySha3(
       { type: "bytes32", value: emailHash },
       { type: "bytes32", value: orderHash }
